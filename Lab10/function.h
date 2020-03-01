@@ -4,10 +4,10 @@
 using namespace std;
 
 struct Node { 
-   int data; 
-   struct Node *next; 
+	int data; 
+	struct Node *next; 
+	//Node(data):data(data), next(nullptr){}
 };
-
 Node* push(Node*, int);
 void print(Node*);
 bool isEmpty(Node*);

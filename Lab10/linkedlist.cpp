@@ -31,7 +31,13 @@ Node* push(Node* head, int new_data) {
    */
 
    // Your implementation here
-
+   //cout << "new_data: "<<new_data<<endl;
+    Node* node = new Node{new_data, nullptr};
+	//cout << "data in node: "<<node->data<<endl;
+	node->next = head;//points to original head
+	head = node;
+	//cout << "data in head: "<<head->data<<endl;
+	return head;
 }
 
 void print(Node* head) { 
@@ -45,7 +51,16 @@ void print(Node* head) {
    */
 
    // Your implementation here
-
+   //cout << "data in head: "<<head->data<<endl;
+	Node* current = head;
+	//cout << "data in current: "<<current->data<<endl;
+	while (current->next != nullptr) {
+		//cout << "data in current: "<<current->data<<endl;
+		std::cout << current->data << "->" ;
+		current = current->next;
+	}
+	std::cout << current->data << "->";//problem here
+	std::cout << "NULL" << std::endl;
 }
 
 
@@ -65,7 +80,11 @@ bool isEmpty(Node* head) {
    */
 
    // Your implementation here
-
+	if (head == nullptr) {
+		return true;
+	}else {
+		return false;
+	}
 }
 
 int size(Node* head) {
@@ -75,9 +94,16 @@ int size(Node* head) {
     * input parameter:   pointer to head of stack
     * returns: size of stack. If empty, return 0
    */
-
+   
    // Your implementation here
-
+   	int counter = 0;
+	Node* current = head;
+	counter++;//head ifself is one element
+	while (current->next != nullptr) {
+		counter++;
+		current = current->next;
+	}
+	return counter;
 }
 
 int top(Node* head) {
@@ -89,7 +115,7 @@ int top(Node* head) {
     *
     * E.g.  If stack was 3->2->1->NULL then top should return 3
    */
-
+	return head->data;
    // Your implementation here
 
 }
@@ -103,9 +129,10 @@ Node* pop(Node* head) {
     *
     * E.g.  If stack was 4->3->2->1->NULL before pop with 
     *       head pointing to 4, then after pop, stack should
-    *       be 3->2->1->NULL with head pointing to 4
+    *       be 3->2->1->NULL with head pointing to 3
    */
-
+	head = head->next;
+	return head;
    // Your implementation here
 
 }
@@ -124,7 +151,19 @@ Node* middle_element(Node* head) {
    */
 
    // Your implementation here
-
+	int counter = 0;
+	Node* current = head;
+	counter++;//head ifself is one element
+	while (current->next != nullptr) {
+		counter++;
+		current = current->next;
+	}
+	int index = counter/2;
+	Node* iterator = head;
+	for(int i = 0; i < index; i++) {
+		iterator =iterator -> next;
+	}
+	return iterator;
 }
 
 /*
@@ -139,7 +178,27 @@ Node* remove_middle_element(Node* head, Node* middle_node) {
     * E.g. For 5->4->3->2->1->NULL, after this operation the
     *      linked list will become 5->4->2->1->NULL
    */
-
+	int counter = 0;
+	Node* current = head;
+	counter++;//head ifself is one element
+	while (current->next != nullptr) {
+		counter++;
+		current = current->next;
+	}
+	int index = counter/2;
+	Node* iterator = head;
+	for(int i = 0; i < index; i++) {
+		iterator=iterator -> next;
+		
+	}
+	iterator = iterator->next; // move to next one, the saved node
+	//now for the iterator before the deleted one
+	Node* iterator_two = head;
+	for(int i = 0; i < index-1; i++) {//iterate one less time
+		iterator_two=iterator_two -> next;
+	}
+	iterator_two->next=iterator; //hook up
+	return head;
    // Your implementation here
 
 }

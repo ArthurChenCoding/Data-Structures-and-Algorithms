@@ -5,6 +5,7 @@ using namespace std;
 //test
 void print_stack_information(Node* head) {
    cout<< endl << "STACK: ";
+   //cout << "data in head: "<<head->data<<endl;
    print(head);
    cout << "SIZE:" + to_string(size(head)) << "\t";
    cout << "IS_EMPTY: " + to_string(isEmpty(head)) << "\t";
@@ -17,7 +18,7 @@ void print_stack_information(Node* head) {
 int main() {
    struct Node* head = NULL;
 
-   print_stack_information(head);
+   //print_stack_information(head);
 
    int number_of_elements;
    cout << "Enter the number of elements to input in stack: ";
@@ -27,7 +28,9 @@ int main() {
       int new_data;
       cout << "Data to PUSH: ";
       cin >> new_data;
+	  //cout << "new_data: "<<new_data<<endl;
       head = push(head, new_data);
+	  //cout << "data in head: "<<head->data<<endl;
       print_stack_information(head);
    }
 
