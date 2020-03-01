@@ -2,7 +2,7 @@
 using namespace std;
 
 #include "function.h"
-//hello
+//test
 void print_stack_information(Node* head) {
    cout<< endl << "STACK: ";
    print(head);
