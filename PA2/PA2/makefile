@@ -1,11 +1,8 @@
-INCLUDES = -std=c++17
-CC = g++
-LIBS = 
-CFLAGS = -Werror
-OBJS1 =  q1.cpp
-OBJS2 =  q2.cpp
+all : q2.o
+	g++ q2.o -o q2.exe
 
-PA2_Q1: ${OBJS1}
-   ${CC} ${INCLUDES} ${CFLAGS} ${OBJS1}
-PA2_Q2345: ${OBJS2}
-   ${CC} ${INCLUDES} ${CFLAGS} ${OBJS2}
+q2.o : q2.cpp BinarySearchTree.h queue.h dsexceptions.h
+	g++ -Werror -c q2.cpp
+
+clean :
+	rm *.o q2.exe 
