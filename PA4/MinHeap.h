@@ -2,7 +2,11 @@
 #define MIN_HEAP_H
 
 using namespace std;       
-
+void swap(int* x, int* y){
+	int holder = *x;
+	*x=*y;
+	*y=holder;
+}
 class MinHeap
 {
   private:
@@ -34,27 +38,64 @@ class MinHeap
 
     // Inserts a new key 'k' 
     void insertKey(int k) {
-        // Remove below line after your implementation
-        return;
+        if(heap_size == capacity){
+			cout << "Cannot insert key" << endl;
+			return;
+		}
+		++heap_size;
+		int i = heap_size-1;
+		arr[i] = k;
+		while(i !=0 && arr[parent(i)] > arr[i]){
+			swap(&arr[i],&arr[parent(i)]);
+			i = parent(i);
+		}	
     }
-
+	void Heapify(int i) {
+		int lindex = left(i);
+		int rindex = right(i);
+		int min = i;
+		if(arr[lindex] < arr[i] && lindex < heap_size){
+			min = lindex;
+		}
+		if(arr[rindex] < arr[min] && rindex < heap_size){
+			min = rindex;
+		}
+		if(min != i){
+			swap(&arr[i],&arr[min]);
+			Heapify(min);		
+		}    
+	}
     // Extract the root which is the minimum element 
     int extractMin() {
-        // Remove below line after your implementation
-        return arr[0];
+        if (heap_size <=0){
+			cout << "cannot extract min" << endl;
+		}
+		if (heap_size ==1){
+			heap_size-1;
+			return arr[0];
+		}
+		int root = arr[0];
+		arr[0] = arr[heap_size-1];
+		heap_size--;
+		Heapify(0);
+        return root;
     }
   
     // Decreases key value of key at index i to newVal 
     void decreaseKey(int i, int newVal) {
-        // Remove below line after your implementation
-        return;
+        arr[i] = newVal;
+		while(arr[parent(i)] > arr[i] && i != 0){
+			swap(&arr[i],&arr[parent(i)]);
+			i = parent(i);
+		}
     }
   
     // Deletes a key stored at index i 
     void deleteKey(int i) {
-        // Remove below line after your implementation
-        return;
-    }
+		decreaseKey(i, 0);
+		extractMin();
+	}
+    
 };
 
 #endif

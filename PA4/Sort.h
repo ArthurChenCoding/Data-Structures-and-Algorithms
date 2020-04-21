@@ -437,50 +437,34 @@ bool isSorted( vector<Comparable> & a ){
 	}
 	return true;
 }
-
+template <typename Comparable>
+void show( vector<Comparable> & a ){
+	for (int i = 0; i < a.size(); i++) {
+		cout << a[i] << " ";
+	}
+	cout<<endl;
+}
 /**
  * Q 1.d - Implement hybrid sort algorithm
  */
 template <typename Comparable>
 void hybridSort( vector<Comparable> & a ){
+	int size = a.size();
+	//size = 18;
+	
 	if (a.size() < 16) {
 		bubbleSort(a);
 		return;
 	}
-	vector<Comparable> v1(1000);
-	vector<Comparable> v2(1000);
-	vector<Comparable> v3(1000);
-	vector<Comparable> v4(1000);
-	for (int i = 0; i < a.size(); i++) {
-		if (i%4==0) {
-			v1.push_back(a[i]);
-		}else if (i%4==1){
-			v2.push_back(a[i]);
-		}else if (i%4==2){
-			v3.push_back(a[i]);
-		}else if (i%4==3){
-			v4.push_back(a[i]);
-		}
-	}
-	quicksort(v1);
-	quicksort(v2);
-	quicksort(v3);
-	quicksort(v4);
+	int size2 = size/4;
+	int size3= size%4+size2;
 	
-	int startPos2nd = v1.size();
-	v1.insert(v1.end(), v2.begin(), v2.end());
-	vector<Comparable> tmp1(v1.size());
-	mergeSort( v1,tmp1,0,v1.size());
-
-	startPos2nd = v3.size();
-	v3.insert(v3.end(), v4.begin(), v4.end());
-	vector<Comparable> tmp2(v3.size());
-	mergeSort( v3,tmp2,0,v3.size());
+	quicksort(a,0,size2);
+	quicksort(a,size2,2*size2);
+	quicksort(a,size2*2,size2*3);
+	quicksort(a,size2*3,size2*3+size3);
 	
-	startPos2nd = v1.size();
-	v1.insert(v1.end(), v3.begin(), v3.end());
-	vector<Comparable> tmp3(v1.size());
-	mergeSort( v1,tmp3,0,v1.size());
+	mergeSort(a);
 }
 
 

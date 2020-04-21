@@ -23,7 +23,7 @@ int main(){
     hybridSort(v);
     std::cout << "hybridSort---- " << 
         (isSorted(v)?"Passed":"Failed") << std::endl;
-    for (int len= 1000; len< 10e6; len *= 10 ){
+    for (int len= 1000; len< 10e7; len *= 10 ){
         std::cout << "%%%%%%%%%%%%%% Array size = " << len << "%%%%%%%%%%%%% "<< std::endl;
         std::vector<int> vec(len);
         for( int i = 0; i < vec.size(); i++)
