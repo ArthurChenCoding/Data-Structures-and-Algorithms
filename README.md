@@ -4,25 +4,21 @@ Specification and implementation of basic abstract data types and their associat
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Download [C++ compiler](https://www.tutorialspoint.com/How-to-Install-Cplusplus-Compiler-on-Linux) in Linux
 
 ```bash
-pip install foobar
+$ g++ -v
 ```
 
-## Usage
+If you have installed GCC, then it should print a message such as the following −
+
 
 ```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+Using built-in specs.
+Target: i386-redhat-linux
+Configured with: ../configure --prefix=/usr .......
+Thread model: posix
+gcc version 4.1.2 20080704 (Red Hat 4.1.2-46)
 ```
 
 ## Contributing
