@@ -28,3 +28,6 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Reference
+CSCE 221 from Texas A&M University
